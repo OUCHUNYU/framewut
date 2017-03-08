@@ -78,7 +78,7 @@ Requests/sec:   1940.47
 Requests/sec:     97.92
 ```
 
-However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting.
+However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we request makes a request of its own against a real, remote endpoint.
 
 First, async beats sync here:
 
