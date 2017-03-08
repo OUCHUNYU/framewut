@@ -45,7 +45,7 @@ All the knowledge of `notes.sh` is encapsulated in [notes.txt](notes.txt), which
 That being said there are a couple things that became clear to me after getting this stuff sorted out.
 
 ### 1. Hello world
-Running under a *gevent* server is better than running plain sync, but not by all that much. 
+Running under a *gevent* server is noticeably better.
 
 ```
 # gevent
