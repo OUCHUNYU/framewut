@@ -73,7 +73,7 @@ basic_test "gevent with sleep" \
 
 
 printf "
-For these tests the endpoint makes HTTP request calls to a separate server.\n
+For these tests the endpoint makes an HTTP request to a separate server.\n
 "
 
 basic_test "plain wsgi with requests" \

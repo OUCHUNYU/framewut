@@ -1,6 +1,5 @@
 """
-    This uses gevent and async requests to hit a second endpoint that simulates
-    network latency (see srv_sleep.py)
+    This uses gevent and async requests to make a request to a second endpoint.
 """
 
 from gevent import wsgi
