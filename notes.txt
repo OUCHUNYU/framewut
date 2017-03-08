@@ -1,0 +1,270 @@
+Wed Mar  8 09:03:03 MST 2017
+
+The following tests demonstrate the behavior of a simple 'hello world'
+application that converts and returns a small JSON string. This is the most
+basic of tests, designed to highlight the different characteristics of the
+underlying frameworks.
+
+================================================================================
+helowrld: plain wsgi (sync)
+================================================================================
+Serving srv_wsgi:app... with 'sync' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.29ms   15.21ms 205.51ms   99.37%
+    Req/Sec     0.85k   202.65     1.04k    88.54%
+  16553 requests in 20.10s, 3.06MB read
+  Socket errors: connect 0, read 59, write 0, timeout 0
+Requests/sec:    823.50
+Transfer/sec:    156.01KB
+
+
+================================================================================
+helowrld: plain wsgi (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_wsgi:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.34ms    1.03ms  31.30ms   89.34%
+    Req/Sec     6.13k     1.49k   10.72k    78.11%
+  1005539 requests in 20.10s, 189.87MB read
+  Socket errors: connect 0, read 102, write 0, timeout 42
+Requests/sec:  50032.02
+Transfer/sec:      9.45MB
+
+
+================================================================================
+helowrld: werkzeug (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_werkzeug:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.96ms    9.05ms 136.89ms   90.51%
+    Req/Sec     4.08k     1.44k   12.49k    71.10%
+  813389 requests in 20.05s, 138.85MB read
+  Socket errors: connect 0, read 58, write 0, timeout 0
+Requests/sec:  40565.47
+Transfer/sec:      6.92MB
+
+
+================================================================================
+helowrld: flask (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_werkzeug:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.22ms    6.98ms 133.64ms   89.49%
+    Req/Sec     4.14k     1.20k   18.44k    69.83%
+  824999 requests in 20.10s, 140.83MB read
+  Socket errors: connect 0, read 59, write 0, timeout 0
+Requests/sec:  41041.21
+Transfer/sec:      7.01MB
+
+
+================================================================================
+helowrld: gevent/wsgi (gevent)
+================================================================================
+Serving srv_gevent_wsgi:app... with 'gevent' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.30ms  106.44ms   1.99s    98.49%
+    Req/Sec     1.41k   763.83     4.68k    70.77%
+  219044 requests in 20.09s, 41.57MB read
+  Socket errors: connect 0, read 0, write 0, timeout 373
+Requests/sec:  10902.24
+Transfer/sec:      2.07MB
+
+
+================================================================================
+helowrld: gevent/wsgi (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_gevent_wsgi:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.72ms    1.96ms  65.06ms   97.64%
+    Req/Sec     5.58k   513.72     8.74k    74.09%
+  1114057 requests in 20.10s, 210.37MB read
+  Socket errors: connect 0, read 58, write 0, timeout 0
+Requests/sec:  55414.77
+Transfer/sec:     10.46MB
+
+
+
+These tests add a tiny sleep to the response. This is where gevent, with
+async I/O (and a monkey patched time.sleep!) makes it's first hint of
+difference.
+
+================================================================================
+plain wsgi with sleep (sync)
+================================================================================
+Serving srv_wsgi_sleep:app... with 'sync' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.35s   200.52ms   1.43s    94.39%
+    Req/Sec    12.23      8.71    50.00     81.27%
+  1962 requests in 20.04s, 371.86KB read
+  Socket errors: connect 0, read 587, write 44, timeout 0
+Requests/sec:     97.92
+Transfer/sec:     18.56KB
+
+
+================================================================================
+plain wsgi with sleep (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_wsgi_sleep:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.29s   522.06ms   2.00s    64.40%
+    Req/Sec    11.25      7.14    57.00     53.39%
+  1974 requests in 20.11s, 381.69KB read
+  Socket errors: connect 0, read 638, write 0, timeout 502
+Requests/sec:     98.18
+Transfer/sec:     18.98KB
+
+
+================================================================================
+gevent with sleep (gevent)
+================================================================================
+Serving srv_gevent_wsgi_sleep:app... with 'gevent' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   102.54ms    1.42ms 117.78ms   78.28%
+    Req/Sec   195.34     10.22   228.00     90.46%
+  39002 requests in 20.10s, 7.40MB read
+  Socket errors: connect 0, read 59, write 0, timeout 0
+Requests/sec:   1940.47
+Transfer/sec:    377.15KB
+
+
+================================================================================
+gevent with sleep (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_gevent_wsgi_sleep:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching {"message":"helowrld"} ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.23s   473.49ms   1.93s    68.02%
+    Req/Sec    11.77      8.30    60.00     84.57%
+  1970 requests in 20.08s, 380.92KB read
+  Socket errors: connect 0, read 597, write 0, timeout 569
+Requests/sec:     98.13
+Transfer/sec:     18.97KB
+
+
+
+For these tests the endpoint makes HTTP request calls to a separate server.
+
+================================================================================
+plain wsgi with requests (sync)
+================================================================================
+Serving srv_wsgi_requests:app... with 'sync' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.28s   360.95ms   2.00s    73.24%
+    Req/Sec    12.33      9.43    70.00     82.17%
+  1736 requests in 20.10s, 2.90MB read
+  Socket errors: connect 0, read 208, write 53, timeout 376
+Requests/sec:     86.37
+Transfer/sec:    147.69KB
+
+
+================================================================================
+plain wsgi with requests (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_wsgi_requests:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.05s   518.50ms   1.98s    62.33%
+    Req/Sec     9.73      6.62    50.00     67.03%
+  1493 requests in 20.09s, 2.50MB read
+  Socket errors: connect 0, read 513, write 12, timeout 694
+Requests/sec:     74.30
+Transfer/sec:    127.34KB
+
+
+================================================================================
+gevent with async requests (gevent)
+================================================================================
+Serving srv_gevent_wsgi_requests:app... with 'gevent' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   884.81ms  497.61ms   2.00s    59.18%
+    Req/Sec    22.39     13.38    80.00     66.67%
+  4166 requests in 20.10s, 6.98MB read
+  Socket errors: connect 0, read 59, write 0, timeout 163
+Requests/sec:    207.24
+Transfer/sec:    355.39KB
+
+
+================================================================================
+plain wsgi with async requests (sync)
+================================================================================
+Serving srv_wsgi_requests_futures:app... with 'sync' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   542.47ms   54.84ms 699.97ms   83.09%
+    Req/Sec    26.02     13.94    90.00     54.65%
+  5015 requests in 20.10s, 8.37MB read
+  Socket errors: connect 0, read 604, write 244, timeout 0
+Requests/sec:    249.46
+Transfer/sec:    426.57KB
+
+
+================================================================================
+plain wsgi with async requests (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_wsgi_requests_futures:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   761.39ms  194.62ms   1.87s    88.65%
+    Req/Sec    26.22     13.43    80.00     58.63%
+  5152 requests in 20.09s, 8.62MB read
+  Socket errors: connect 0, read 121, write 0, timeout 0
+Requests/sec:    256.39
+Transfer/sec:    439.41KB
+
+
