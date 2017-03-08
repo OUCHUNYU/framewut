@@ -5,10 +5,7 @@
 import json
 import os
 import requests
-
-# NOTE should be the same for all servers testing the same thing... TODO should
-# probably be in a shared lib
-TEST_URL = 'http://google.com/ishouldproducea404' 
+from misc.utils import TEST_URL
 
 def app(env, start_response):
     start_response('200 OK', [('Content-Type', 'application/json')])

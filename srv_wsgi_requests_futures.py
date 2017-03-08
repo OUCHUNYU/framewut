@@ -6,12 +6,10 @@
 import json
 import os
 import requests
+from misc.utils import TEST_URL
 
 from requests_futures.sessions import FuturesSession
 session = FuturesSession()
-
-# NOTE should be the same for all servers testing the same thing...
-TEST_URL = 'http://google.com/ishouldproducea404' 
 
 def app(env, start_response):
     start_response('200 OK', [('Content-Type', 'application/json')])

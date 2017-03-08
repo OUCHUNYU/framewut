@@ -6,14 +6,12 @@ from gevent import wsgi
 from gevent import monkey
 monkey.patch_all()
 from requests_futures.sessions import FuturesSession
+from misc.utils import TEST_URL
 
 import json
 import time
 
 session = FuturesSession()
-
-# NOTE should be the same for all servers testing the same thing...
-TEST_URL = 'http://google.com/ishouldproducea404' 
 
 def app(env, start_response):
     start_response('200 OK', [('Content-Type', 'application/json')])
