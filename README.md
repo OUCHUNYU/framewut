@@ -101,4 +101,4 @@ Requests/sec:    249.46
 # plain wsgi with meinheld worker
 Requests/sec:    256.39
 ```
-No monkey patching or anything, and the synchronous server beats gevent (!?). Running with *Meinheld* is even more of an improvement, if a slight one. And I honestly don't know 
+No monkey patching or anything, and the synchronous server beats gevent (!?). Running with *Meinheld* is even more of an improvement, if a slight one (but I honestly don't know what hacks it might be running here, either).
