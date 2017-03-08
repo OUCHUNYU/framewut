@@ -65,7 +65,7 @@ Requests/sec:  10902.24
 Requests/sec:  50032.02
 ```
 
-(Note, I'm not here to bash gevent, I'm primarily making comparisons against it because it was the technology I initially was interested in understanding.)
+However, it should be noted that *Meinheld* is also an event loop based server.
 
 ### 2. The real world
 In our *sleep* tests, where we use `time.sleep` on an endpoint, gevent definitely makes a difference over the other configurations:
