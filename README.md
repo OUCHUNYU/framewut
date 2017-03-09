@@ -5,7 +5,7 @@
 
 But then you start to play around with things, and notice that you can run things various ways. Python imposes no restrictions (or guidance!) on this. E.g. you can run a Flask app as a gevent WSGI server. But you don't monkey patch, and so your `time.sleep` test performs no better than just running a plain WSGI server synchronously. Or perhaps you compare a CPU-intensive task, sync against async, and there is little difference (or maybe synchronous does a little better!).
 
-Maybe you decide that for a really good test you should run under Gunicorn with 10 workers as you might in production, and then you realize there are all these _worker classes_ there, like _Meinheld_ (which claims it's a better async server, and is based on something called picoev, blah). Then you also notice that you can run a server written for _gevent_ with a _Meinheld_ worker and you start to wonder, "can these just run together? does that even make sense?"
+Maybe you decide that for a really good test you should run under Gunicorn with 10 workers as you might in production, and you realize there are all these _worker classes_ there, like _Meinheld_ (which claims it's a better async server, and is based on something called picoev, blah). Then you also notice that you can run a server written for _gevent_ with a _Meinheld_ worker and you start to wonder, "can these just run together? does that even make sense?"
 
 ### Anyway ...
 The above has more or less been my experience, and I finally got tired of wondering and getting confusing information from The Google and decided to just sort of _sort it out myself_.
