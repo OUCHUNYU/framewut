@@ -1,21 +1,21 @@
 # framewut
 [![wut](misc/wut.png)](misc/wut.png)
 
-Python web frameworks and their nearly infinite configurations are frankly kind of a morass. Like, we've all heard and take for truth that you should ditch the synchronous model for something async, based on libev -- you know like gevent, right?
+**Python** web frameworks and their nearly infinite configurations are frankly kind of a morass. Like, we've all heard and take for truth that you should ditch the synchronous model for something async, based on libev -- you know like gevent, right?
 
-But then you start to play around with things, and notice that you can run things various ways. Python imposes no restrictions (or guidance!) on this. E.g. you can run a Flask app as a gevent WSGI server. But you don't monkey patch, and so your `time.sleep` test performs no better than just running a plain WSGI server synchronously. Or perhaps you compare a CPU-intensive task under sync and async, and the sync actually performs better!
+But then you start to play around with things, and notice that you can run things various ways. Python imposes no restrictions (or guidance!) on this. E.g. you can run a Flask app as a gevent WSGI server. But you don't monkey patch, and so your `time.sleep` test performs no better than just running a plain WSGI server synchronously. Or perhaps you compare a CPU-intensive task, sync against async, and there is little difference (or maybe synchronous does a little better!).
 
-Maybe you decide that for a great test you should run under Gunicorn with 10 workers as you might in production, and then you realize there are all these _worker classes_ there, like _Meinheld_ which claims it's a better async server, and is based on something called picoev, blah. Then you also notice that you can run a server written for _gevent_ with a _Meinheld_ worker and maybe you start to wonder, "can these just run together? does that even make sense?"
+Maybe you decide that for a really good test you should run under Gunicorn with 10 workers as you might in production, and then you realize there are all these _worker classes_ there, like _Meinheld_ (which claims it's a better async server, and is based on something called picoev, blah). Then you also notice that you can run a server written for _gevent_ with a _Meinheld_ worker and you start to wonder, "can these just run together? does that even make sense?"
 
 ### Anyway ...
-The above has more or less been my experience, and so I finally got tired of wondering and getting confusing information from The Google and decided to just sort of _sort it out myself_.
+The above has more or less been my experience, and I finally got tired of wondering and getting confusing information from The Google and decided to just sort of _sort it out myself_.
 
-Hence, this repository. It basically is a set of simple servers oriented around a few test scenarios, which are then run in various ways by combining frameworks and engines (or whatever each is called; frankly I don't really care at this point):
+Hence, this repository. Which is basically a set of simple servers oriented around a few test scenarios, which are then run in various ways by combining frameworks and engines (or whatever each is called; frankly I don't really care at this point):
 
 * A basic *hello world* test, ran synchronously and asynchronously, as a vanilla WSGI server, Werkzeug, Flask.
 * A *sleep* test, where we modify the *hello world* test to add a tiny `time.sleep` on the endpoint.
-* A *request* test, the most realistic test here, which modifies the *hello world* test to make a request to a remote page, and return the results. We not only test with async/sync engines, but with sync and async *request* libraries.
-* `TODO` A CPU-intenstive test comparing async vs. sync.
+* A *request* test, a bit more realistic test, which modifies the *hello world* test to make a request to a remote page, and return the results. We not only test with async/sync engines, but with sync and async *request* libraries.
+* A CPU-intenstive test comparing async vs. sync.
 
 ## Getting started
 If you want to try this out, clone this repository and do

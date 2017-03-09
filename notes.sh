@@ -31,10 +31,10 @@ basic of tests, designed to highlight the different characteristics of the
 underlying frameworks.\n
 "
 
-basic_test "helowrld: plain wsgi" \
+basic_test "helowrld: vanilla wsgi" \
     srv_wsgi sync
 
-basic_test "helowrld: plain wsgi" \
+basic_test "helowrld: vanilla wsgi" \
     srv_wsgi "meinheld.gmeinheld.MeinheldWorker"
 
 basic_test "helowrld: werkzeug" \
@@ -57,10 +57,10 @@ async I/O (and a monkey patched time.sleep!) makes it's first hint of
 difference.\n
 "
 
-basic_test "plain wsgi with sleep" \
+basic_test "vanilla wsgi with sleep" \
     srv_wsgi_sleep sync
 
-basic_test "plain wsgi with sleep" \
+basic_test "vanilla wsgi with sleep" \
     srv_wsgi_sleep "meinheld.gmeinheld.MeinheldWorker"
 
 basic_test "gevent with sleep" \
@@ -76,17 +76,35 @@ printf "
 For these tests the endpoint makes an HTTP request to a separate server.\n
 "
 
-basic_test "plain wsgi with requests" \
+basic_test "vanilla wsgi with requests" \
     srv_wsgi_requests sync
-sleep 1
-basic_test "plain wsgi with requests" \
+sleep 2
+basic_test "vanilla wsgi with requests" \
     srv_wsgi_requests "meinheld.gmeinheld.MeinheldWorker"
 sleep 2
-basic_test "gevent with async requests" \
+basic_test "gevent with requests" \
     srv_gevent_wsgi_requests gevent
-sleep 1
-basic_test "plain wsgi with async requests" \
+sleep 2
+basic_test "gevent with async requests" \
+    srv_gevent_wsgi_requests_futures gevent
+sleep 2
+basic_test "vanilla wsgi with async requests" \
     srv_wsgi_requests_futures sync
-sleep 1
-basic_test "plain wsgi with async requests" \
+sleep 2
+basic_test "vanilla wsgi with async requests" \
     srv_wsgi_requests_futures "meinheld.gmeinheld.MeinheldWorker"
+
+
+
+printf "
+These tests perform a relatively intensive CPU task (generating an array of numbers).\n
+"
+
+basic_test "CPU intensive: vanilla wsgi" \
+    srv_wsgi_cpu sync
+
+basic_test "CPU intensive: vanilla wsgi" \
+    srv_wsgi_cpu "meinheld.gmeinheld.MeinheldWorker"
+
+basic_test "CPU intensive: gevent/wsgi" \
+    srv_gevent_wsgi_cpu gevent

@@ -1,6 +1,5 @@
 """
-    This uses gevent and requests (not async) to make a request to a remote
-    endpoint.
+    This uses gevent and async requests to hit a remote endpoint.
 """
 
 import json, time
@@ -9,13 +8,19 @@ import requests
 from gevent import wsgi
 from gevent import monkey
 monkey.patch_all()
+
+from requests_futures.sessions import FuturesSession
 from misc.utils import TEST_URL
 
 TEST_URL += str(int(time.time()))
 
+session = FuturesSession()
+
 def app(env, start_response):
     start_response('200 OK', [('Content-Type', 'application/json')])
-    return [requests.get(TEST_URL).text.encode('utf-8')]
+    fut = session.get(TEST_URL)
+    resp = fut.result()
+    return [resp.text.encode('utf-8')]
 
 if __name__ == '__main__':
     wsgi.WSGIServer(

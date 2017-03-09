@@ -1,6 +1,6 @@
 """
-    The endpoint makes a request to another endpoint, but uses the async
-    request_futures to do it.
+    The endpoint makes a request to a remote endpoint, but uses the async
+    requests to do it.
 """
 
 import json

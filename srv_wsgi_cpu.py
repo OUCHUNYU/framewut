@@ -1,16 +1,14 @@
 """
-    The endpoint makes a request to a remote site.
+    Return a JSON string converted from a large(ish) array of numbers.
 """
 
-import os, json, time
-import requests
-from misc.utils import TEST_URL
-
-TEST_URL += str(int(time.time()))
+import json
+import time
+from misc.utils import TEST_ITERS
 
 def app(env, start_response):
     start_response('200 OK', [('Content-Type', 'application/json')])
-    return [requests.get(TEST_URL).text.encode('utf-8')]
+    return [json.dumps({'message': [i for i in range(TEST_ITERS)] }).encode('utf-8')]
 
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
