@@ -5,10 +5,10 @@
 
 But then you start to play around with things, and notice that you can run things various ways. Python imposes no restrictions (or guidance!) on this. E.g. you can run a Flask app as a gevent WSGI server. But you don't monkey patch, and so your `time.sleep` test performs no better than just running a plain WSGI server synchronously. Or perhaps you compare a CPU-intensive task, sync against async, and there is little difference (or maybe synchronous does a little better!).
 
-Maybe you decide that for a really good test you should run under Gunicorn with 10 workers as you might in production, and you realize there are all these _worker classes_ there, like _Meinheld_ (which claims it's a better async server, and is based on something called picoev, blah). Then you also notice that you can run a server written for _gevent_ with a _Meinheld_ worker and you start to wonder, "can these just run together? does that even make sense?"
+Maybe you decide that for a really good test you should run under Gunicorn with 10 workers as you might in production, and you realize there are all these *worker classes* there, like *Meinheld* (which claims it's a better async server, and is based on something called picoev, blah). Then you also notice that you can run a server written for *gevent* with a *Meinheld* worker and you start to wonder, "can these just run together? does that even make sense?"
 
 ### Anyway ...
-The above has more or less been my experience, and I finally got tired of wondering and getting confusing information from The Google and decided to just sort of _sort it out myself_.
+The above has more or less been my experience, and I finally got tired of wondering and getting confusing information from The Google and decided to just sort of *sort it out myself*.
 
 Hence, this repository. Which is basically a set of simple servers oriented around a few test scenarios, which are then run in various ways by combining frameworks and engines (or whatever each is called; frankly I don't really care at this point):
 
@@ -36,7 +36,7 @@ To understand how the tests are run, I recommend looking at that script. (Everyt
 
 ## Interesting things
 
-*Wed Mar  8 09:03:03 MST 2017*
+*Fri Mar 10 08:32:54 CST 2017*
 
 This was never intended to be a comprehensive benchmarking project. It is more a way to understand some characteristics of different configurations.
 
@@ -45,24 +45,24 @@ All the knowledge of `notes.sh` is encapsulated in [notes.txt](notes.txt), which
 That being said there are a couple things that became clear to me after getting this stuff sorted out.
 
 ### 1. Hello world
-Running under a *gevent* server is noticeably better.
+Running under a *gevent* server is considerably better.
 
 ```
 # gevent
-Requests/sec:  10902.24
+Requests/sec:  12157.01
 
 # synchronous wsgi
-Requests/sec:    823.50
+Requests/sec:    823.07
 ```
 
-More interestingly, running the plain WSGI code unmodified with a *Meinheld* worker is actually much *better* than gevent:
+More interestingly, running the plain WSGI code unmodified with a *Meinheld* worker is actually noticeably *better* than gevent:
 
 ```
 # gevent
-Requests/sec:  10902.24
+Requests/sec:  12157.01
 
 # wsgi with meinheld workder
-Requests/sec:  50032.02
+Requests/sec:  61283.44
 ```
 
 However, it should be noted that *Meinheld* is also an event loop based server.
@@ -72,33 +72,46 @@ In our *sleep* tests, where we use `time.sleep` on an endpoint, gevent definitel
 
 ```
 # gevent 
-Requests/sec:   1940.47
+Requests/sec:   1947.02
 
 # synchronous wsgi
-Requests/sec:     97.92
+Requests/sec:     98.46
 ```
 
 However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we request makes a request of its own against a real, remote endpoint.
 
-First, async beats sync here:
+Surprisingly (or perhaps not), *gevent* does not do well when using a synchronous *requests* library, whereas the vanilla synchronous server fairs a bit better:
 
 ```
 # gevent
-Requests/sec:    207.24
+Requests/sec:      5.38
 
 # synchronous wsgi
-Requests/sec:     86.37
+Requests/sec:    109.39
 ```
 
-However, there's a caveat. The gevent test in the above is using an *async requests* library, whereas the synchronous test is just using regular old [requests](http://docs.python-requests.org/).
-
-So what happens when we use a synchronous server, but use an asynchronous requests library? The same one we use for the gevent one in the test above, in fact.
+When you switch to an async *requests* library (we're using the FuturesSession library), things look better:
 
 ```
+# gevent
+Requests/sec:    226.57
+
 # synchronous wsgi
-Requests/sec:    249.46
+Requests/sec:    197.75
 
-# plain wsgi with meinheld worker
-Requests/sec:    256.39
+# wsgi with meinheld worker
+Requests/sec:    211.04
 ```
-No monkey patching or anything, and the synchronous server beats gevent (!?). Running with *Meinheld* is even more of an improvement, if a slight one (but I honestly don't know what hacks it might be running here, either).
+
+But notice that things look better all around. I.e. the server in this case doesn't seem to make much difference. Switching to an async requests library *does* seem to matter though.
+
+### 3. CPU
+If you add in a CPU intenstive task, things will get blocked. In this case async is not really much better than sync.
+
+```
+# gevent
+Requests/sec:    208.45
+
+# synchronous wsgi
+Requests/sec:    229.23
+```

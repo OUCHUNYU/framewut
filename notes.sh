@@ -81,7 +81,7 @@ basic_test "vanilla wsgi with requests" \
 sleep 2
 basic_test "vanilla wsgi with requests" \
     srv_wsgi_requests "meinheld.gmeinheld.MeinheldWorker"
-sleep 2
+sleep 4
 basic_test "gevent with requests" \
     srv_gevent_wsgi_requests gevent
 sleep 2

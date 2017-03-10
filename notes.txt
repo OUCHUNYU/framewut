@@ -1,4 +1,4 @@
-Wed Mar  8 09:03:03 MST 2017
+Fri Mar 10 08:32:54 CST 2017
 
 The following tests demonstrate the behavior of a simple 'hello world'
 application that converts and returns a small JSON string. This is the most
@@ -6,7 +6,7 @@ basic of tests, designed to highlight the different characteristics of the
 underlying frameworks.
 
 ================================================================================
-helowrld: plain wsgi (sync)
+helowrld: vanilla wsgi (sync)
 ================================================================================
 Serving srv_wsgi:app... with 'sync' worker
 Fetching {"message":"helowrld"} ...
@@ -14,16 +14,16 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    12.29ms   15.21ms 205.51ms   99.37%
-    Req/Sec     0.85k   202.65     1.04k    88.54%
-  16553 requests in 20.10s, 3.06MB read
-  Socket errors: connect 0, read 59, write 0, timeout 0
-Requests/sec:    823.50
-Transfer/sec:    156.01KB
+    Latency    15.20ms   23.61ms 275.15ms   98.69%
+    Req/Sec   706.19    217.82     0.95k    82.53%
+  16545 requests in 20.10s, 3.06MB read
+  Socket errors: connect 0, read 58, write 0, timeout 0
+Requests/sec:    823.07
+Transfer/sec:    155.93KB
 
 
 ================================================================================
-helowrld: plain wsgi (meinheld.gmeinheld.MeinheldWorker)
+helowrld: vanilla wsgi (meinheld.gmeinheld.MeinheldWorker)
 ================================================================================
 Serving srv_wsgi:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
 Fetching {"message":"helowrld"} ...
@@ -31,12 +31,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     2.34ms    1.03ms  31.30ms   89.34%
-    Req/Sec     6.13k     1.49k   10.72k    78.11%
-  1005539 requests in 20.10s, 189.87MB read
-  Socket errors: connect 0, read 102, write 0, timeout 42
-Requests/sec:  50032.02
-Transfer/sec:      9.45MB
+    Latency     3.26ms  338.87us   9.73ms   77.60%
+    Req/Sec     6.16k   320.75     7.81k    75.75%
+  1225859 requests in 20.00s, 231.48MB read
+  Socket errors: connect 0, read 55, write 0, timeout 0
+Requests/sec:  61283.44
+Transfer/sec:     11.57MB
 
 
 ================================================================================
@@ -48,12 +48,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     6.96ms    9.05ms 136.89ms   90.51%
-    Req/Sec     4.08k     1.44k   12.49k    71.10%
-  813389 requests in 20.05s, 138.85MB read
-  Socket errors: connect 0, read 58, write 0, timeout 0
-Requests/sec:  40565.47
-Transfer/sec:      6.92MB
+    Latency     4.50ms    2.12ms  47.22ms   83.31%
+    Req/Sec     4.55k   690.20    22.78k    85.56%
+  906030 requests in 20.10s, 154.67MB read
+  Socket errors: connect 0, read 59, write 0, timeout 0
+Requests/sec:  45078.00
+Transfer/sec:      7.70MB
 
 
 ================================================================================
@@ -65,12 +65,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     6.22ms    6.98ms 133.64ms   89.49%
-    Req/Sec     4.14k     1.20k   18.44k    69.83%
-  824999 requests in 20.10s, 140.83MB read
-  Socket errors: connect 0, read 59, write 0, timeout 0
-Requests/sec:  41041.21
-Transfer/sec:      7.01MB
+    Latency     5.08ms    4.33ms  58.62ms   81.57%
+    Req/Sec     4.57k   505.32     7.14k    63.85%
+  909542 requests in 20.01s, 155.27MB read
+  Socket errors: connect 0, read 62, write 0, timeout 0
+Requests/sec:  45457.68
+Transfer/sec:      7.76MB
 
 
 ================================================================================
@@ -82,12 +82,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    12.30ms  106.44ms   1.99s    98.49%
-    Req/Sec     1.41k   763.83     4.68k    70.77%
-  219044 requests in 20.09s, 41.57MB read
-  Socket errors: connect 0, read 0, write 0, timeout 373
-Requests/sec:  10902.24
-Transfer/sec:      2.07MB
+    Latency    53.51ms  212.91ms   1.87s    93.81%
+    Req/Sec     1.53k   846.18     5.35k    73.30%
+  244240 requests in 20.09s, 46.35MB read
+  Socket errors: connect 0, read 61, write 0, timeout 289
+Requests/sec:  12157.01
+Transfer/sec:      2.31MB
 
 
 ================================================================================
@@ -99,12 +99,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.72ms    1.96ms  65.06ms   97.64%
-    Req/Sec     5.58k   513.72     8.74k    74.09%
-  1114057 requests in 20.10s, 210.37MB read
-  Socket errors: connect 0, read 58, write 0, timeout 0
-Requests/sec:  55414.77
-Transfer/sec:     10.46MB
+    Latency     3.46ms    1.21ms  57.39ms   99.34%
+    Req/Sec     5.86k   366.70    11.94k    76.49%
+  1171229 requests in 20.10s, 221.16MB read
+  Socket errors: connect 0, read 57, write 0, timeout 0
+Requests/sec:  58265.31
+Transfer/sec:     11.00MB
 
 
 
@@ -113,7 +113,7 @@ async I/O (and a monkey patched time.sleep!) makes it's first hint of
 difference.
 
 ================================================================================
-plain wsgi with sleep (sync)
+vanilla wsgi with sleep (sync)
 ================================================================================
 Serving srv_wsgi_sleep:app... with 'sync' worker
 Fetching {"message":"helowrld"} ...
@@ -121,16 +121,16 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.35s   200.52ms   1.43s    94.39%
-    Req/Sec    12.23      8.71    50.00     81.27%
-  1962 requests in 20.04s, 371.86KB read
-  Socket errors: connect 0, read 587, write 44, timeout 0
-Requests/sec:     97.92
-Transfer/sec:     18.56KB
+    Latency     1.35s   201.38ms   1.44s    94.36%
+    Req/Sec    11.68      7.97    58.00     82.36%
+  1950 requests in 20.03s, 369.75KB read
+  Socket errors: connect 0, read 1059, write 34, timeout 0
+Requests/sec:     97.38
+Transfer/sec:     18.46KB
 
 
 ================================================================================
-plain wsgi with sleep (meinheld.gmeinheld.MeinheldWorker)
+vanilla wsgi with sleep (meinheld.gmeinheld.MeinheldWorker)
 ================================================================================
 Serving srv_wsgi_sleep:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
 Fetching {"message":"helowrld"} ...
@@ -138,12 +138,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.29s   522.06ms   2.00s    64.40%
-    Req/Sec    11.25      7.14    57.00     53.39%
-  1974 requests in 20.11s, 381.69KB read
-  Socket errors: connect 0, read 638, write 0, timeout 502
-Requests/sec:     98.18
-Transfer/sec:     18.98KB
+    Latency     1.23s   482.69ms   1.93s    62.62%
+    Req/Sec    11.09      6.80    49.00     56.19%
+  1977 requests in 20.08s, 382.27KB read
+  Socket errors: connect 0, read 579, write 0, timeout 594
+Requests/sec:     98.46
+Transfer/sec:     19.04KB
 
 
 ================================================================================
@@ -155,12 +155,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   102.54ms    1.42ms 117.78ms   78.28%
-    Req/Sec   195.34     10.22   228.00     90.46%
-  39002 requests in 20.10s, 7.40MB read
-  Socket errors: connect 0, read 59, write 0, timeout 0
-Requests/sec:   1940.47
-Transfer/sec:    377.15KB
+    Latency   102.22ms    1.31ms 117.83ms   82.28%
+    Req/Sec   195.95     10.00   225.00     89.64%
+  39000 requests in 20.03s, 7.40MB read
+  Socket errors: connect 0, read 62, write 0, timeout 0
+Requests/sec:   1947.02
+Transfer/sec:    378.43KB
 
 
 ================================================================================
@@ -172,19 +172,19 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.23s   473.49ms   1.93s    68.02%
-    Req/Sec    11.77      8.30    60.00     84.57%
+    Latency     1.22s   446.45ms   1.93s    67.50%
+    Req/Sec    11.73      8.08    60.00     80.45%
   1970 requests in 20.08s, 380.92KB read
-  Socket errors: connect 0, read 597, write 0, timeout 569
-Requests/sec:     98.13
+  Socket errors: connect 0, read 567, write 0, timeout 564
+Requests/sec:     98.10
 Transfer/sec:     18.97KB
 
 
 
-For these tests the endpoint makes HTTP request calls to a separate server.
+For these tests the endpoint makes an HTTP request to a separate server.
 
 ================================================================================
-plain wsgi with requests (sync)
+vanilla wsgi with requests (sync)
 ================================================================================
 Serving srv_wsgi_requests:app... with 'sync' worker
 Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
@@ -192,16 +192,16 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.28s   360.95ms   2.00s    73.24%
-    Req/Sec    12.33      9.43    70.00     82.17%
-  1736 requests in 20.10s, 2.90MB read
-  Socket errors: connect 0, read 208, write 53, timeout 376
-Requests/sec:     86.37
-Transfer/sec:    147.69KB
+    Latency     1.21s   171.98ms   1.36s    94.95%
+    Req/Sec    13.49      9.59    69.00     79.23%
+  2198 requests in 20.09s, 3.69MB read
+  Socket errors: connect 0, read 294, write 62, timeout 0
+Requests/sec:    109.39
+Transfer/sec:    188.01KB
 
 
 ================================================================================
-plain wsgi with requests (meinheld.gmeinheld.MeinheldWorker)
+vanilla wsgi with requests (meinheld.gmeinheld.MeinheldWorker)
 ================================================================================
 Serving srv_wsgi_requests:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
 Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
@@ -209,16 +209,16 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.05s   518.50ms   1.98s    62.33%
-    Req/Sec     9.73      6.62    50.00     67.03%
-  1493 requests in 20.09s, 2.50MB read
-  Socket errors: connect 0, read 513, write 12, timeout 694
-Requests/sec:     74.30
-Transfer/sec:    127.34KB
+    Latency     1.31s   482.08ms   2.00s    65.17%
+    Req/Sec    10.43      7.57    50.00     68.96%
+  1491 requests in 20.03s, 2.51MB read
+  Socket errors: connect 0, read 618, write 4, timeout 687
+Requests/sec:     74.42
+Transfer/sec:    128.21KB
 
 
 ================================================================================
-gevent with async requests (gevent)
+gevent with requests (gevent)
 ================================================================================
 Serving srv_gevent_wsgi_requests:app... with 'gevent' worker
 Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
@@ -226,16 +226,33 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   884.81ms  497.61ms   2.00s    59.18%
-    Req/Sec    22.39     13.38    80.00     66.67%
-  4166 requests in 20.10s, 6.98MB read
-  Socket errors: connect 0, read 59, write 0, timeout 163
-Requests/sec:    207.24
-Transfer/sec:    355.39KB
+    Latency   849.15ms  171.06ms 918.60ms   95.00%
+    Req/Sec     6.91      5.52    19.00     63.64%
+  108 requests in 20.09s, 186.15KB read
+  Socket errors: connect 0, read 64, write 0, timeout 8
+Requests/sec:      5.38
+Transfer/sec:      9.27KB
 
 
 ================================================================================
-plain wsgi with async requests (sync)
+gevent with async requests (gevent)
+================================================================================
+Serving srv_gevent_wsgi_requests_futures:app... with 'gevent' worker
+Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   825.85ms  569.28ms   2.00s    53.32%
+    Req/Sec    26.85     17.13   100.00     66.43%
+  4552 requests in 20.09s, 7.66MB read
+  Socket errors: connect 0, read 63, write 0, timeout 111
+Requests/sec:    226.57
+Transfer/sec:    390.53KB
+
+
+================================================================================
+vanilla wsgi with async requests (sync)
 ================================================================================
 Serving srv_wsgi_requests_futures:app... with 'sync' worker
 Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
@@ -243,16 +260,16 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   542.47ms   54.84ms 699.97ms   83.09%
-    Req/Sec    26.02     13.94    90.00     54.65%
-  5015 requests in 20.10s, 8.37MB read
-  Socket errors: connect 0, read 604, write 244, timeout 0
-Requests/sec:    249.46
-Transfer/sec:    426.57KB
+    Latency   681.48ms   85.87ms 886.34ms   81.50%
+    Req/Sec    21.26     12.51    80.00     80.86%
+  3973 requests in 20.09s, 6.63MB read
+  Socket errors: connect 0, read 565, write 106, timeout 0
+Requests/sec:    197.75
+Transfer/sec:    337.95KB
 
 
 ================================================================================
-plain wsgi with async requests (meinheld.gmeinheld.MeinheldWorker)
+vanilla wsgi with async requests (meinheld.gmeinheld.MeinheldWorker)
 ================================================================================
 Serving srv_wsgi_requests_futures:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
 Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
@@ -260,11 +277,65 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   761.39ms  194.62ms   1.87s    88.65%
-    Req/Sec    26.22     13.43    80.00     58.63%
-  5152 requests in 20.09s, 8.62MB read
-  Socket errors: connect 0, read 121, write 0, timeout 0
-Requests/sec:    256.39
-Transfer/sec:    439.41KB
+    Latency   901.74ms  241.45ms   1.99s    77.90%
+    Req/Sec    21.96     12.22    80.00     64.00%
+  4241 requests in 20.10s, 7.09MB read
+  Socket errors: connect 0, read 153, write 13, timeout 25
+Requests/sec:    211.04
+Transfer/sec:    361.49KB
+
+
+
+These tests perform a relatively intensive CPU task (generating an array of numbers).
+
+================================================================================
+CPU intensive: vanilla wsgi (sync)
+================================================================================
+Serving srv_wsgi_cpu:app... with 'sync' worker
+Fetching  ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   589.41ms   65.66ms 665.12ms   96.65%
+    Req/Sec    23.82     13.50    99.00     55.21%
+  4603 requests in 20.08s, 2.95GB read
+  Socket errors: connect 0, read 422, write 11, timeout 0
+Requests/sec:    229.23
+Transfer/sec:    150.65MB
+
+
+================================================================================
+CPU intensive: vanilla wsgi (meinheld.gmeinheld.MeinheldWorker)
+================================================================================
+Serving srv_wsgi_cpu:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
+Fetching  ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   875.88ms  264.93ms   1.99s    79.70%
+    Req/Sec    23.00     13.35   118.00     59.68%
+  4425 requests in 20.10s, 2.84GB read
+  Socket errors: connect 0, read 100, write 0, timeout 11
+Requests/sec:    220.13
+Transfer/sec:    144.66MB
+
+
+================================================================================
+CPU intensive: gevent/wsgi (gevent)
+================================================================================
+Serving srv_gevent_wsgi_cpu:app... with 'gevent' worker
+Fetching  ...
+
+Running 20s test @ http://0.0.0.0:5000/
+  10 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    57.80ms  119.52ms   2.00s    98.84%
+    Req/Sec    36.43     22.42   121.00     68.52%
+  4188 requests in 20.09s, 2.76GB read
+  Socket errors: connect 0, read 61, write 0, timeout 211
+Requests/sec:    208.45
+Transfer/sec:    140.55MB
 
 
