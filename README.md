@@ -14,7 +14,7 @@ Hence, this repository. Which is basically a set of simple servers oriented arou
 
 * A basic *hello world* test, ran synchronously and asynchronously, as a vanilla WSGI server, Werkzeug, Flask.
 * A *sleep* test, where we modify the *hello world* test to add a tiny `time.sleep` on the endpoint.
-* A *request* test, a bit more realistic test, which modifies the *hello world* test to make a request to a remote page, and return the results. We not only test with async/sync engines, but with sync and async *request* libraries.
+* A *request* test, a bit more realistic one which modifies the *hello world* test to make a request to a remote page, and return the results. We not only test with async/sync engines, but with sync and async *request* libraries.
 * A CPU-intenstive test comparing async vs. sync.
 
 ## Getting started
