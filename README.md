@@ -16,6 +16,7 @@ Hence, this repository. Which is basically a set of simple servers oriented arou
 * A *sleep* test, where we modify the *hello world* test to add a tiny `time.sleep` on the endpoint.
 * A *request* test, a bit more realistic one which modifies the *hello world* test to make a request to a remote page, and return the results. We not only test with async/sync engines, but with sync and async *request* libraries.
 * A CPU-intenstive test comparing async vs. sync.
+* *TODO* Database test
 
 ## Getting started
 If you want to try this out, clone this repository and do
@@ -78,19 +79,21 @@ Requests/sec:   1947.02
 Requests/sec:     98.46
 ```
 
-However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we request makes a request of its own against a real, remote endpoint.
+However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we hit makes a request of its own against a real, remote endpoint.
 
-Surprisingly (or perhaps not), *gevent* does not do well when using a synchronous *requests* library, whereas the vanilla synchronous server fairs a bit better:
+(There's a bit of a caveat I should mention regarding the below requests tests. In observing multiple runs, I've noticed that the results are a bit unpredictable. While I chose a remote endpoint -- a 404 on Google -- that I feel should be relatively stable/responsive, other factors like network come into play here.)
+
+Basically, it appears that sync and async fare about the same.
 
 ```
 # gevent
-Requests/sec:      5.38
+Requests/sec:     86.83
 
 # synchronous wsgi
-Requests/sec:    109.39
+Requests/sec:    105.78
 ```
 
-When you switch to an async *requests* library (we're using the FuturesSession library), things look better:
+When you change to an async *requests* library (we're using the FuturesSession library), things look better:
 
 ```
 # gevent
@@ -103,10 +106,10 @@ Requests/sec:    197.75
 Requests/sec:    211.04
 ```
 
-But notice that things look better all around. I.e. the server in this case doesn't seem to make much difference. Switching to an async requests library *does* seem to matter though.
+But notice that things look better all around. I.e. the framework in this case doesn't seem to make much difference. Switching to an async requests library *does* seem to matter though.
 
 ### 3. CPU
-If you add in a CPU intenstive task, things will get blocked. In this case async is not really much better than sync.
+If you add in a CPU intenstive task, things will get blocked, especially in an event loop. Another case where sync and async have essentially attained parity.
 
 ```
 # gevent
