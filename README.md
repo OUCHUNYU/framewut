@@ -83,7 +83,7 @@ However, when we do something that's more like what we'd actually do in real lif
 
 (There's a bit of a caveat I should mention regarding the below requests tests. In observing multiple runs, I've noticed that the results are a bit unpredictable. While I chose a remote endpoint -- a 404 on Google -- that I feel should be relatively stable/responsive, other factors like network come into play here.)
 
-Basically, it appears that sync and async fare about the same.
+Basically, sync and async seem to fare about the same.
 
 ```
 # gevent
