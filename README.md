@@ -81,7 +81,7 @@ Requests/sec:     97.54
 
 However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we hit makes a request of its own against a real, remote endpoint.
 
-Basically, sync and async seem to fare about the same.
+Basically, sync and async seem to fare about the same, when making *synchronous requests* to a remote endpoint.
 
 ```
 # gevent
