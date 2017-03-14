@@ -1,4 +1,4 @@
-Fri Mar 10 08:32:54 CST 2017
+Tue Mar 14 09:30:17 MDT 2017
 
 The following tests demonstrate the behavior of a simple 'hello world'
 application that converts and returns a small JSON string. This is the most
@@ -14,12 +14,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    15.20ms   23.61ms 275.15ms   98.69%
-    Req/Sec   706.19    217.82     0.95k    82.53%
-  16545 requests in 20.10s, 3.06MB read
-  Socket errors: connect 0, read 58, write 0, timeout 0
-Requests/sec:    823.07
-Transfer/sec:    155.93KB
+    Latency    11.33ms    7.25ms 104.61ms   98.61%
+    Req/Sec     0.88k   219.89     1.08k    88.89%
+  16542 requests in 20.08s, 3.06MB read
+  Socket errors: connect 0, read 105, write 0, timeout 0
+Requests/sec:    823.69
+Transfer/sec:    156.05KB
 
 
 ================================================================================
@@ -31,29 +31,29 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.26ms  338.87us   9.73ms   77.60%
-    Req/Sec     6.16k   320.75     7.81k    75.75%
-  1225859 requests in 20.00s, 231.48MB read
-  Socket errors: connect 0, read 55, write 0, timeout 0
-Requests/sec:  61283.44
-Transfer/sec:     11.57MB
+    Latency     2.59ms    2.11ms  81.48ms   98.79%
+    Req/Sec     5.85k     1.05k   13.70k    75.90%
+  956972 requests in 20.10s, 180.70MB read
+  Socket errors: connect 0, read 193, write 0, timeout 63
+Requests/sec:  47621.63
+Transfer/sec:      8.99MB
 
 
 ================================================================================
 helowrld: werkzeug (meinheld.gmeinheld.MeinheldWorker)
 ================================================================================
 Serving srv_werkzeug:app... with 'meinheld.gmeinheld.MeinheldWorker' worker
-Fetching {"message":"helowrld"} ...
+Fetching {"message":"helowrld"}  ...
 
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     4.50ms    2.12ms  47.22ms   83.31%
-    Req/Sec     4.55k   690.20    22.78k    85.56%
-  906030 requests in 20.10s, 154.67MB read
-  Socket errors: connect 0, read 59, write 0, timeout 0
-Requests/sec:  45078.00
-Transfer/sec:      7.70MB
+    Latency     5.63ms    5.29ms  60.36ms   79.51%
+    Req/Sec     4.26k     1.25k    8.36k    75.42%
+  850596 requests in 20.10s, 145.20MB read
+  Socket errors: connect 0, read 61, write 0, timeout 0
+Requests/sec:  42310.34
+Transfer/sec:      7.22MB
 
 
 ================================================================================
@@ -65,12 +65,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     5.08ms    4.33ms  58.62ms   81.57%
-    Req/Sec     4.57k   505.32     7.14k    63.85%
-  909542 requests in 20.01s, 155.27MB read
-  Socket errors: connect 0, read 62, write 0, timeout 0
-Requests/sec:  45457.68
-Transfer/sec:      7.76MB
+    Latency     4.94ms    1.75ms  39.22ms   86.71%
+    Req/Sec     4.11k   321.43     5.09k    73.55%
+  818228 requests in 20.01s, 139.68MB read
+  Socket errors: connect 0, read 58, write 0, timeout 0
+Requests/sec:  40892.97
+Transfer/sec:      6.98MB
 
 
 ================================================================================
@@ -82,11 +82,11 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    53.51ms  212.91ms   1.87s    93.81%
-    Req/Sec     1.53k   846.18     5.35k    73.30%
-  244240 requests in 20.09s, 46.35MB read
-  Socket errors: connect 0, read 61, write 0, timeout 289
-Requests/sec:  12157.01
+    Latency    11.80ms   96.73ms   1.91s    98.35%
+    Req/Sec     1.51k   842.74     5.57k    68.80%
+  244545 requests in 20.08s, 46.41MB read
+  Socket errors: connect 0, read 60, write 0, timeout 281
+Requests/sec:  12180.94
 Transfer/sec:      2.31MB
 
 
@@ -99,12 +99,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.46ms    1.21ms  57.39ms   99.34%
-    Req/Sec     5.86k   366.70    11.94k    76.49%
-  1171229 requests in 20.10s, 221.16MB read
-  Socket errors: connect 0, read 57, write 0, timeout 0
-Requests/sec:  58265.31
-Transfer/sec:     11.00MB
+    Latency     3.67ms  390.99us   9.08ms   74.84%
+    Req/Sec     5.47k   334.60     6.63k    72.65%
+  1087925 requests in 20.01s, 205.43MB read
+  Socket errors: connect 0, read 56, write 0, timeout 0
+Requests/sec:  54377.05
+Transfer/sec:     10.27MB
 
 
 
@@ -121,12 +121,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.35s   201.38ms   1.44s    94.36%
-    Req/Sec    11.68      7.97    58.00     82.36%
-  1950 requests in 20.03s, 369.75KB read
-  Socket errors: connect 0, read 1059, write 34, timeout 0
-Requests/sec:     97.38
-Transfer/sec:     18.46KB
+    Latency     1.35s   200.88ms   1.43s    94.37%
+    Req/Sec    12.59      9.72    68.00     83.38%
+  1953 requests in 20.02s, 370.00KB read
+  Socket errors: connect 0, read 802, write 54, timeout 0
+Requests/sec:     97.54
+Transfer/sec:     18.48KB
 
 
 ================================================================================
@@ -138,12 +138,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.23s   482.69ms   1.93s    62.62%
-    Req/Sec    11.09      6.80    49.00     56.19%
-  1977 requests in 20.08s, 382.27KB read
-  Socket errors: connect 0, read 579, write 0, timeout 594
-Requests/sec:     98.46
-Transfer/sec:     19.04KB
+    Latency     1.30s   475.52ms   1.93s    57.80%
+    Req/Sec    11.18      6.93    49.00     55.08%
+  1970 requests in 20.07s, 380.92KB read
+  Socket errors: connect 0, read 622, write 0, timeout 522
+Requests/sec:     98.14
+Transfer/sec:     18.98KB
 
 
 ================================================================================
@@ -155,12 +155,12 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   102.22ms    1.31ms 117.83ms   82.28%
-    Req/Sec   195.95     10.00   225.00     89.64%
-  39000 requests in 20.03s, 7.40MB read
-  Socket errors: connect 0, read 62, write 0, timeout 0
-Requests/sec:   1947.02
-Transfer/sec:    378.43KB
+    Latency   102.61ms    1.39ms 121.39ms   78.46%
+    Req/Sec   195.27     10.39   235.00     90.98%
+  38804 requests in 20.01s, 7.36MB read
+  Socket errors: connect 0, read 53, write 0, timeout 0
+Requests/sec:   1939.15
+Transfer/sec:    376.85KB
 
 
 ================================================================================
@@ -172,11 +172,11 @@ Fetching {"message":"helowrld"} ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.22s   446.45ms   1.93s    67.50%
-    Req/Sec    11.73      8.08    60.00     80.45%
+    Latency     1.25s   490.27ms   1.93s    66.98%
+    Req/Sec    11.63      7.99    79.00     82.97%
   1970 requests in 20.08s, 380.92KB read
-  Socket errors: connect 0, read 567, write 0, timeout 564
-Requests/sec:     98.10
+  Socket errors: connect 0, read 622, write 0, timeout 574
+Requests/sec:     98.08
 Transfer/sec:     18.97KB
 
 
@@ -192,12 +192,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.21s   171.98ms   1.36s    94.95%
-    Req/Sec    13.49      9.59    69.00     79.23%
-  2198 requests in 20.09s, 3.69MB read
-  Socket errors: connect 0, read 294, write 62, timeout 0
-Requests/sec:    109.39
-Transfer/sec:    188.01KB
+    Latency     1.11s   185.41ms   1.99s    92.85%
+    Req/Sec    14.22      9.70    80.00     73.82%
+  2217 requests in 20.07s, 3.72MB read
+  Socket errors: connect 0, read 310, write 68, timeout 231
+Requests/sec:    110.45
+Transfer/sec:    189.84KB
 
 
 ================================================================================
@@ -209,12 +209,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.31s   482.08ms   2.00s    65.17%
-    Req/Sec    10.43      7.57    50.00     68.96%
-  1491 requests in 20.03s, 2.51MB read
-  Socket errors: connect 0, read 618, write 4, timeout 687
-Requests/sec:     74.42
-Transfer/sec:    128.21KB
+    Latency     1.11s   461.11ms   1.98s    65.73%
+    Req/Sec    13.43      8.20    50.00     75.31%
+  2216 requests in 20.09s, 3.73MB read
+  Socket errors: connect 0, read 634, write 10, timeout 582
+Requests/sec:    110.29
+Transfer/sec:    190.00KB
 
 
 ================================================================================
@@ -226,12 +226,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   849.15ms  171.06ms 918.60ms   95.00%
-    Req/Sec     6.91      5.52    19.00     63.64%
-  108 requests in 20.09s, 186.15KB read
-  Socket errors: connect 0, read 64, write 0, timeout 8
-Requests/sec:      5.38
-Transfer/sec:      9.27KB
+    Latency   596.96ms  537.27ms   1.99s    76.48%
+    Req/Sec    15.27      9.60    50.00     69.69%
+  2648 requests in 20.10s, 4.46MB read
+  Socket errors: connect 0, read 64, write 0, timeout 497
+Requests/sec:    131.75
+Transfer/sec:    227.10KB
 
 
 ================================================================================
@@ -243,12 +243,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   825.85ms  569.28ms   2.00s    53.32%
-    Req/Sec    26.85     17.13   100.00     66.43%
-  4552 requests in 20.09s, 7.66MB read
-  Socket errors: connect 0, read 63, write 0, timeout 111
-Requests/sec:    226.57
-Transfer/sec:    390.53KB
+    Latency   767.20ms  577.78ms   1.59s    38.79%
+    Req/Sec    27.41     19.84   108.00     75.88%
+  5056 requests in 20.06s, 8.51MB read
+  Socket errors: connect 0, read 66, write 0, timeout 0
+Requests/sec:    252.03
+Transfer/sec:    434.40KB
 
 
 ================================================================================
@@ -260,12 +260,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   681.48ms   85.87ms 886.34ms   81.50%
-    Req/Sec    21.26     12.51    80.00     80.86%
-  3973 requests in 20.09s, 6.63MB read
-  Socket errors: connect 0, read 565, write 106, timeout 0
-Requests/sec:    197.75
-Transfer/sec:    337.95KB
+    Latency   535.45ms   40.29ms 608.85ms   97.02%
+    Req/Sec    26.16     13.81    90.00     57.20%
+  5074 requests in 20.09s, 8.47MB read
+  Socket errors: connect 0, read 515, write 221, timeout 0
+Requests/sec:    252.56
+Transfer/sec:    431.61KB
 
 
 ================================================================================
@@ -277,12 +277,12 @@ Fetching <!DOCTYPEhtml><htmllang=en><metacharset=utf-8><met ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   901.74ms  241.45ms   1.99s    77.90%
-    Req/Sec    21.96     12.22    80.00     64.00%
-  4241 requests in 20.10s, 7.09MB read
-  Socket errors: connect 0, read 153, write 13, timeout 25
-Requests/sec:    211.04
-Transfer/sec:    361.49KB
+    Latency   751.28ms  200.68ms   1.99s    82.22%
+    Req/Sec    26.22     13.33    80.00     59.13%
+  5166 requests in 20.08s, 8.64MB read
+  Socket errors: connect 0, read 143, write 2, timeout 1
+Requests/sec:    257.28
+Transfer/sec:    440.69KB
 
 
 
@@ -297,12 +297,12 @@ Fetching  ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   589.41ms   65.66ms 665.12ms   96.65%
-    Req/Sec    23.82     13.50    99.00     55.21%
-  4603 requests in 20.08s, 2.95GB read
-  Socket errors: connect 0, read 422, write 11, timeout 0
-Requests/sec:    229.23
-Transfer/sec:    150.65MB
+    Latency   627.87ms   77.28ms 805.04ms   95.20%
+    Req/Sec    22.03     11.99    80.00     55.11%
+  4309 requests in 20.06s, 2.77GB read
+  Socket errors: connect 0, read 416, write 6, timeout 0
+Requests/sec:    214.86
+Transfer/sec:    141.20MB
 
 
 ================================================================================
@@ -314,12 +314,12 @@ Fetching  ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   875.88ms  264.93ms   1.99s    79.70%
-    Req/Sec    23.00     13.35   118.00     59.68%
-  4425 requests in 20.10s, 2.84GB read
-  Socket errors: connect 0, read 100, write 0, timeout 11
-Requests/sec:    220.13
-Transfer/sec:    144.66MB
+    Latency   907.43ms  269.95ms   1.99s    79.36%
+    Req/Sec    21.94     12.99    80.00     80.61%
+  4192 requests in 20.10s, 2.69GB read
+  Socket errors: connect 0, read 153, write 0, timeout 31
+Requests/sec:    208.52
+Transfer/sec:    137.06MB
 
 
 ================================================================================
@@ -331,11 +331,11 @@ Fetching  ...
 Running 20s test @ http://0.0.0.0:5000/
   10 threads and 200 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    57.80ms  119.52ms   2.00s    98.84%
-    Req/Sec    36.43     22.42   121.00     68.52%
-  4188 requests in 20.09s, 2.76GB read
-  Socket errors: connect 0, read 61, write 0, timeout 211
-Requests/sec:    208.45
-Transfer/sec:    140.55MB
+    Latency    67.08ms  140.33ms   1.95s    98.18%
+    Req/Sec    31.98     28.83   141.00     72.26%
+  3890 requests in 20.08s, 2.56GB read
+  Socket errors: connect 0, read 60, write 0, timeout 383
+Requests/sec:    193.77
+Transfer/sec:    130.53MB
 
 

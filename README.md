@@ -37,7 +37,7 @@ To understand how the tests are run, I recommend looking at that script. (Everyt
 
 ## Interesting things
 
-*Fri Mar 10 08:32:54 CST 2017*
+*Tue Mar 14 09:30:17 MDT 2017*
 
 This was never intended to be a comprehensive benchmarking project. It is more a way to understand some characteristics of different configurations.
 
@@ -50,71 +50,69 @@ Running under a *gevent* server is considerably better.
 
 ```
 # gevent
-Requests/sec:  12157.01
+Requests/sec:  12180.94
 
 # synchronous wsgi
-Requests/sec:    823.07
+Requests/sec:    823.69
 ```
 
-More interestingly, running the plain WSGI code unmodified with a *Meinheld* worker is actually noticeably *better* than gevent:
+Perhaps even more interesting, running the plain WSGI code unmodified with a *Meinheld* worker is actually noticeably better than gevent:
 
 ```
 # gevent
-Requests/sec:  12157.01
+Requests/sec:  12180.94
 
 # wsgi with meinheld workder
-Requests/sec:  61283.44
+Requests/sec:  54377.05
 ```
 
 However, it should be noted that *Meinheld* is also an event loop based server.
 
 ### 2. The real world
-In our *sleep* tests, where we use `time.sleep` on an endpoint, gevent definitely makes a difference over the other configurations:
+In our *sleep* tests, where we use `time.sleep` on an endpoint, gevent really outpaces the other configurations:
 
 ```
 # gevent 
-Requests/sec:   1947.02
+Requests/sec:   1939.15
 
 # synchronous wsgi
-Requests/sec:     98.46
+Requests/sec:     97.54
 ```
 
 However, when we do something that's more like what we'd actually do in real life, the results, are, well more interesting. In the following tests, the endpoint we hit makes a request of its own against a real, remote endpoint.
-
-(There's a bit of a caveat I should mention regarding the below requests tests. In observing multiple runs, I've noticed that the results are a bit unpredictable. While I chose a remote endpoint -- a 404 on Google -- that I feel should be relatively stable/responsive, other factors like network come into play here.)
 
 Basically, sync and async seem to fare about the same.
 
 ```
 # gevent
-Requests/sec:     86.83
+Requests/sec:    131.75
 
 # synchronous wsgi
-Requests/sec:    105.78
+Requests/sec:    110.45
 ```
 
 When you change to an async *requests* library (we're using the FuturesSession library), things look better:
 
 ```
 # gevent
-Requests/sec:    226.57
+Requests/sec:    252.03
 
 # synchronous wsgi
-Requests/sec:    197.75
+Requests/sec:    252.56
 
 # wsgi with meinheld worker
-Requests/sec:    211.04
+Requests/sec:    257.28
 ```
 
 But notice that things look better all around. I.e. the framework in this case doesn't seem to make much difference. Switching to an async requests library *does* seem to matter though.
 
 ### 3. CPU
-If you add in a CPU intenstive task, things will get blocked, especially in an event loop. Another case where sync and async have essentially attained parity.
+If you add in a CPU intenstive task, things will get blocked, even in an event loop. Another case where sync and async have essentially attained parity.
 
 ```
 # gevent
-Requests/sec:    208.45
+Requests/sec:    193.77
 
 # synchronous wsgi
-Requests/sec:    229.23
+Requests/sec:    214.86
 ```
